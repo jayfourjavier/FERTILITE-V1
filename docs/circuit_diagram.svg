@@ -1,0 +1,278 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 920" width="1400" height="920"
+    font-family="Arial, Helvetica, sans-serif">
+    <defs>
+        <style>
+      .blk { fill: #f5f7fa; stroke: #37474f; stroke-width: 2.5; }
+      .ttl { font-size: 17px; font-weight: bold; fill: #263238; text-anchor: middle; }
+      .sub { font-size: 12px; fill: #546e7a; text-anchor: middle; }
+      .pin { font-size: 12px; fill: #263238; }
+      .pinr { font-size: 12px; fill: #263238; text-anchor: end; }
+      .pinm { font-size: 12px; fill: #263238; text-anchor: middle; }
+      .w { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+      .lbl { font-size: 12px; font-weight: bold; text-anchor: middle; }
+      .net { stroke: #212121; stroke-width: 2; fill: none; }
+    </style>
+        <g id="gnd">
+            <line class="net" x1="0" y1="0" x2="0" y2="10" />
+            <line class="net" x1="-10" y1="10" x2="10" y2="10" />
+            <line class="net" x1="-6" y1="14" x2="6" y2="14" />
+            <line class="net" x1="-2" y1="18" x2="2" y2="18" />
+        </g>
+    </defs>
+
+    <rect width="1400" height="920" fill="#ffffff" />
+    <text x="700" y="36" class="ttl" style="font-size:26px">FERTILITE V1 - CIRCUIT DIAGRAM</text>
+    <text x="700" y="58" class="sub" style="font-size:14px">Proposed wiring. Identical net labels
+        (GND, 3V3) are connected together.</text>
+
+    <!-- ================= POWER SECTION ================= -->
+    <!-- Battery pack -->
+    <rect class="blk" x="40" y="80" width="220" height="90" rx="6" />
+    <g fill="#e3f2fd" stroke="#37474f" stroke-width="2">
+        <rect x="52" y="105" width="42" height="50" rx="3" />
+        <rect x="100" y="105" width="42" height="50" rx="3" />
+        <rect x="148" y="105" width="42" height="50" rx="3" />
+        <rect x="196" y="105" width="42" height="50" rx="3" />
+    </g>
+    <text x="73" y="135" class="pinm">3.2V</text>
+    <text x="121" y="135" class="pinm">3.2V</text>
+    <text x="169" y="135" class="pinm">3.2V</text>
+    <text x="217" y="135" class="pinm">3.2V</text>
+    <text x="150" y="98" class="ttl" style="font-size:14px">LiFePO4 4S PACK, 12.8V (4 x 33140)</text>
+    <!-- Active balancer -->
+    <rect class="blk" x="340" y="80" width="220" height="90" rx="6" />
+    <text x="450" y="115" class="ttl">ACTIVE BALANCER</text>
+    <text x="450" y="135" class="sub">4S 5A (LiFePO4)</text>
+    <text x="450" y="155" class="sub">taps: B-, B1, B2, B3, B+</text>
+    <path class="w" stroke="#5c6bc0" d="M260 125 H340" />
+    <text x="300" y="117" class="pinm" style="font-size:11px">5 taps</text>
+    <circle cx="260" cy="125" r="4" fill="#5c6bc0" />
+    <circle cx="340" cy="125" r="4" fill="#5c6bc0" />
+    <!-- BMS -->
+    <rect class="blk" x="40" y="240" width="220" height="110" rx="6" />
+    <text x="150" y="285" class="ttl">BMS 4S 20A</text>
+    <text x="150" y="305" class="sub">protection + balancing</text>
+    <text x="150" y="325" class="sub">(B1-B3 balance leads)</text>
+    <text x="90" y="262" class="pinm">B+</text>
+    <text x="210" y="262" class="pinm">B-</text>
+    <!-- pack to BMS -->
+    <path class="w" stroke="#d32f2f" d="M90 170 V240" />
+    <path class="w" stroke="#212121" d="M210 170 V240" />
+    <!-- Charger -->
+    <rect class="blk" x="40" y="450" width="220" height="80" rx="6" />
+    <text x="150" y="486" class="ttl">LiFePO4 CHARGER</text>
+    <text x="150" y="508" class="sub">14.6V 2A</text>
+    <path class="w" stroke="#d32f2f" d="M90 450 V350" />
+    <path class="w" stroke="#212121" d="M210 450 V350" />
+    <text x="78" y="395" class="pinr" style="fill:#d32f2f">P+</text>
+    <text x="222" y="395" class="pin">P-</text>
+    <text x="150" y="425" class="sub">charge in</text>
+
+    <!-- BMS load output -->
+    <text x="252" y="258" class="pinr">P+</text>
+    <text x="252" y="318" class="pinr">P-</text>
+    <path class="w" stroke="#d32f2f" d="M260 260 H290" />
+    <path class="w" stroke="#212121" d="M260 320 H290" />
+    <g transform="translate(290 320) rotate(-90)">
+        <use href="#gnd" x="0" y="0" />
+    </g>
+
+    <!-- Power switch -->
+    <circle cx="300" cy="260" r="4" fill="#d32f2f" />
+    <path class="w" stroke="#d32f2f" d="M304 260 L340 244" style="stroke:#37474f" />
+    <circle cx="345" cy="260" r="4" fill="#d32f2f" />
+    <text x="322" y="232" class="pinm">POWER SW</text>
+    <path class="w" stroke="#d32f2f" d="M349 260 H1050 V360" />
+    <text x="560" y="250" class="lbl" fill="#d32f2f" style="fill:#d32f2f">+12.8V RAIL</text>
+    <circle cx="420" cy="260" r="5" fill="#d32f2f" />
+
+    <!-- Buck converter -->
+    <rect class="blk" x="370" y="340" width="130" height="100" rx="6" />
+    <text x="435" y="378" class="ttl" style="font-size:15px">BUCK 12V-5V</text>
+    <text x="435" y="426" class="sub">DC-DC converter</text>
+    <text x="420" y="360" class="pinm">IN+</text>
+    <text x="474" y="404" class="pinr">OUT+</text>
+    <path class="w" stroke="#d32f2f" d="M420 260 V340" />
+    <path class="w" stroke="#f57c00" d="M500 400 H560" />
+    <text x="530" y="392" class="lbl" fill="#f57c00" style="fill:#f57c00">5V</text>
+    <text x="420" y="436" class="pinm" style="display:none">GND</text>
+    <use href="#gnd" x="420" y="440" />
+
+    <!-- ================= ESP32 ================= -->
+    <rect class="blk" x="560" y="360" width="200" height="280" rx="8" style="fill:#e8f0fe" />
+    <text x="660" y="500" class="ttl">ESP32</text>
+    <text x="660" y="520" class="sub">NodeMCU-32S</text>
+    <text x="660" y="540" class="sub">3.3V logic, 240 MHz</text>
+    <!-- left pins -->
+    <text x="568" y="404" class="pin">VIN</text>
+    <text x="568" y="444" class="pin">GND</text>
+    <g transform="translate(560 440) rotate(90)">
+        <use href="#gnd" x="0" y="0" />
+    </g>
+    <!-- right pins -->
+    <text x="752" y="404" class="pinr">GPIO14</text>
+    <text x="752" y="444" class="pinr">GPIO27</text>
+    <text x="752" y="484" class="pinr">GPIO12</text>
+    <text x="752" y="524" class="pinr">3V3</text>
+    <!-- top label -->
+    <!-- bottom pins -->
+    <text x="579" y="632" class="pin" style="text-anchor:start" transform="rotate(-90 579 632)">
+        GPIO21</text>
+    <text x="609" y="632" class="pin" style="text-anchor:start" transform="rotate(-90 609 632)">
+        GPIO22</text>
+    <text x="639" y="632" class="pin" style="text-anchor:start" transform="rotate(-90 639 632)">
+        GPIO32</text>
+    <text x="669" y="632" class="pin" style="text-anchor:start" transform="rotate(-90 669 632)">
+        GPIO33</text>
+    <text x="699" y="632" class="pin" style="text-anchor:start" transform="rotate(-90 699 632)">
+        GPIO25</text>
+    <text x="729" y="632" class="pin" style="text-anchor:start" transform="rotate(-90 729 632)">
+        GPIO26</text>
+
+    <!-- ================= DRV8825 ================= -->
+    <rect class="blk" x="960" y="360" width="180" height="260" rx="8" style="fill:#f3e5f5" />
+    <text x="1050" y="480" class="ttl">DRV8825</text>
+    <text x="1050" y="500" class="sub">stepper driver</text>
+    <text x="1050" y="545" class="sub">RST tied to SLP</text>
+    <text x="1050" y="563" class="sub">set current limit (Vref)</text>
+    <text x="1050" y="378" class="pinm">VMOT</text>
+    <text x="968" y="404" class="pin">STEP</text>
+    <text x="968" y="444" class="pin">DIR</text>
+    <text x="968" y="484" class="pin">EN</text>
+    <text x="968" y="524" class="pin">M0 M1 M2</text>
+    <text x="1132" y="404" class="pinr">1A</text>
+    <text x="1132" y="444" class="pinr">1B</text>
+    <text x="1132" y="484" class="pinr">2A</text>
+    <text x="1132" y="524" class="pinr">2B</text>
+    <text x="1050" y="610" class="pinm">GND</text>
+    <use href="#gnd" x="1050" y="620" />
+
+    <!-- signals ESP32 -> DRV8825 -->
+    <path class="w" stroke="#2e7d32" d="M760 400 H960" />
+    <path class="w" stroke="#1565c0" d="M760 440 H960" />
+    <path class="w" stroke="#6a1b9a" d="M760 480 H960" />
+    <path class="w" stroke="#c2185b" d="M760 520 H960" />
+    <text x="860" y="392" class="lbl" fill="#2e7d32" style="fill:#2e7d32">STEP</text>
+    <text x="860" y="432" class="lbl" fill="#1565c0" style="fill:#1565c0">DIR</text>
+    <text x="860" y="472" class="lbl" fill="#6a1b9a" style="fill:#6a1b9a">EN</text>
+    <text x="860" y="512" class="lbl" fill="#c2185b" style="fill:#c2185b">3V3 (1/32 step)</text>
+
+    <!-- capacitor 100uF across VMOT / GND -->
+    <circle cx="1050" cy="310" r="5" fill="#d32f2f" />
+    <path class="w" stroke="#d32f2f" d="M1050 310 H1110 V322" />
+    <path class="w" stroke="#212121" d="M1096 322 H1124 M1096 332 H1124" />
+    <path class="w" stroke="#212121" d="M1110 332 V345" />
+    <use href="#gnd" x="1110" y="345" />
+    <text x="1150" y="330" class="pin">100 uF</text>
+
+    <!-- ================= MOTOR ================= -->
+    <rect class="blk" x="1240" y="380" width="130" height="170" rx="8" style="fill:#e8eaf6" />
+    <text x="1305" y="450" class="ttl">NEMA17</text>
+    <text x="1305" y="470" class="sub">stepper motor</text>
+    <text x="1305" y="490" class="sub">1.8 deg/step</text>
+    <text x="1248" y="404" class="pin">A+</text>
+    <text x="1248" y="444" class="pin">A-</text>
+    <text x="1248" y="484" class="pin">B+</text>
+    <text x="1248" y="524" class="pin">B-</text>
+    <path class="w" stroke="#ef6c00" d="M1140 400 H1240" />
+    <path class="w" stroke="#ef6c00" d="M1140 440 H1240" />
+    <path class="w" stroke="#00838f" d="M1140 480 H1240" />
+    <path class="w" stroke="#00838f" d="M1140 520 H1240" />
+    <text x="1190" y="392" class="sub">coil A</text>
+    <text x="1190" y="512" class="sub">coil B</text>
+
+    <!-- ================= SENSORS / INPUTS ================= -->
+    <!-- VL53L0X -->
+    <rect class="blk" x="340" y="770" width="200" height="90" rx="6" style="fill:#e0f7fa" />
+    <text x="440" y="818" class="ttl">VL53L0X</text>
+    <text x="440" y="838" class="sub">ToF sensor, I2C 0x29</text>
+    <text x="380" y="790" class="pinm">SDA</text>
+    <text x="420" y="790" class="pinm">SCL</text>
+    <text x="460" y="790" class="pinm">VIN</text>
+    <text x="500" y="790" class="pinm">GND</text>
+    <path class="w" stroke="#00838f" d="M575 640 V665 H380 V770" />
+    <path class="w" stroke="#9e9d24" d="M605 640 V680 H420 V770" />
+    <text x="480" y="658" class="lbl" style="fill:#00838f">SDA</text>
+    <text x="500" y="698" class="lbl" style="fill:#9e9d24">SCL</text>
+    <!-- 3V3 and GND for ToF -->
+    <path class="w" stroke="#c2185b" d="M460 770 V748" />
+    <path class="w" stroke="#c2185b" d="M450 748 H470" />
+    <text x="460" y="740" class="lbl" fill="#c2185b" style="fill:#c2185b">3V3</text>
+    <g transform="translate(500 770) rotate(180)">
+        <use href="#gnd" x="0" y="0" />
+    </g>
+
+    <!-- Limit switch 1 -->
+    <rect class="blk" x="560" y="770" width="120" height="90" rx="6" style="fill:#efebe9" />
+    <text x="620" y="818" class="ttl" style="font-size:13px">LIMIT SWITCH 1</text>
+    <text x="620" y="838" class="sub">end 1, normally open</text>
+    <text x="600" y="790" class="pinm">NO</text>
+    <text x="650" y="790" class="pinm">COM</text>
+    <path class="w" stroke="#5d4037" d="M635 640 V700 H600 V770" />
+    <g transform="translate(650 770) rotate(180)">
+        <use href="#gnd" x="0" y="0" />
+    </g>
+
+    <!-- Limit switch 2 -->
+    <rect class="blk" x="700" y="770" width="120" height="90" rx="6" style="fill:#efebe9" />
+    <text x="760" y="818" class="ttl" style="font-size:13px">LIMIT SWITCH 2</text>
+    <text x="760" y="838" class="sub">end 2, normally open</text>
+    <text x="740" y="790" class="pinm">NO</text>
+    <text x="790" y="790" class="pinm">COM</text>
+    <path class="w" stroke="#8d6e63" d="M665 640 V715 H740 V770" />
+    <g transform="translate(790 770) rotate(180)">
+        <use href="#gnd" x="0" y="0" />
+    </g>
+
+    <!-- Selector -->
+    <rect class="blk" x="830" y="770" width="150" height="90" rx="6" style="fill:#eceff1" />
+    <text x="905" y="818" class="ttl" style="font-size:13px">3-POS SELECTOR</text>
+    <text x="905" y="838" class="sub">pos 3 = both inputs high</text>
+    <text x="870" y="790" class="pinm">1</text>
+    <text x="910" y="790" class="pinm">2</text>
+    <text x="950" y="790" class="pinm">COM</text>
+    <path class="w" stroke="#455a64" d="M695 640 V700 H870 V770" />
+    <path class="w" stroke="#78909c" d="M725 640 V685 H910 V770" />
+    <g transform="translate(950 770) rotate(180)">
+        <use href="#gnd" x="0" y="0" />
+    </g>
+
+    <!-- pin dots -->
+    <g fill="#212121">
+        <circle cx="575" cy="640" r="4" />
+        <circle cx="605" cy="640" r="4" />
+        <circle cx="635" cy="640" r="4" />
+        <circle cx="665" cy="640" r="4" />
+        <circle cx="695" cy="640" r="4" />
+        <circle cx="725" cy="640" r="4" />
+        <circle cx="760" cy="400" r="4" />
+        <circle cx="760" cy="440" r="4" />
+        <circle cx="760" cy="480" r="4" />
+        <circle cx="760" cy="520" r="4" />
+        <circle cx="560" cy="400" r="4" />
+        <circle cx="560" cy="440" r="4" />
+    </g>
+
+    <!-- ================= LEGEND ================= -->
+    <rect x="1000" y="700" width="380" height="210" fill="#fafafa" stroke="#b0bec5"
+        stroke-width="1.5" rx="6" />
+    <text x="1190" y="722" class="ttl" style="font-size:14px">LEGEND</text>
+    <g font-size="12" fill="#263238">
+        <line x1="1015" y1="742" x2="1055" y2="742" stroke="#d32f2f" stroke-width="3" />
+        <text x="1062" y="746">+12.8V (battery, after BMS and switch)</text>
+        <line x1="1015" y1="762" x2="1055" y2="762" stroke="#f57c00" stroke-width="3" />
+        <text x="1062" y="766">+5V (buck converter to ESP32 VIN)</text>
+        <line x1="1015" y1="782" x2="1055" y2="782" stroke="#c2185b" stroke-width="3" />
+        <text x="1062" y="786">+3.3V (ESP32 3V3 pin)</text>
+        <line x1="1015" y1="802" x2="1055" y2="802" stroke="#212121" stroke-width="3" />
+        <text x="1062" y="806">GND (common ground)</text>
+        <line x1="1015" y1="822" x2="1055" y2="822" stroke="#2e7d32" stroke-width="3" />
+        <text x="1062" y="826">Stepper signals: STEP / DIR / EN</text>
+        <line x1="1015" y1="842" x2="1055" y2="842" stroke="#00838f" stroke-width="3" />
+        <text x="1062" y="846">I2C: SDA (GPIO21) / SCL (GPIO22)</text>
+        <line x1="1015" y1="862" x2="1055" y2="862" stroke="#5d4037" stroke-width="3" />
+        <text x="1062" y="866">Inputs: limit switches 1 and 2, selector (INPUT_PULLUP)</text>
+        <line x1="1015" y1="882" x2="1055" y2="882" stroke="#5c6bc0" stroke-width="3" />
+        <text x="1062" y="886">Cell balance taps (pack to active balancer)</text>
+    </g>
+</svg>
